@@ -3,6 +3,7 @@
 #include "esphome/core/component.h"
 #include "esphome/core/helpers.h"
 #include "esphome/components/uart/uart.h"
+#include "esphome/components/time/real_time_clock.h"
 #include "esphome/components/sensor/sensor.h"
 #include "esphome/components/text_sensor/text_sensor.h"
 
@@ -17,10 +18,12 @@ namespace esphome {
       void setup() override;
       void loop() override;
 
-      void set_post_code_sensor(sensor::Sensor *sensor) {post_code_sensor_ = sensor; }
-      void set_post_code_text_sensor(text_sensor::TextSensor *sensor) {post_code_text_sensor_ = sensor; }
+      void set_post_code_sensor(sensor::Sensor *sensor) { this->post_code_sensor_ = sensor; }
+      void set_post_code_text_sensor(text_sensor::TextSensor *sensor) { this->post_code_text_sensor_ = sensor; }
+      void set_realtime(time::RealTimeClock *time) { this->real_time_ = time; }
+      void do_realtime_self_check() const; // Note: method blocks caller for at least 1s
 
-    private:
+    private: // methods
       /** Update sensor with new post code received at timestamp
       * @param code POST code
       * @param timestamp milliseconds from boot
@@ -34,10 +37,17 @@ namespace esphome {
       */
       std::string format_post_code_text_sensor(const uint8_t code, const uint32_t timestamp, const uint32_t deltaToLast);
 
-    private:
+      /** If a valid real-time source is available, return a string representation of the given
+       *  timestamp as real time (incl. milliseconds) in current timezone. Format is HH:MM:SS.SSS
+       * @return on error, the string is empty
+       */
+      std::string get_realtime(const uint32_t timestamp) const;
+
+    private: // attributes
       HighFrequencyLoopRequester highFreqLoopRequester_;
       sensor::Sensor          * post_code_sensor_{nullptr};
       text_sensor::TextSensor * post_code_text_sensor_{nullptr};
+      time::RealTimeClock * real_time_{nullptr};
       // last received POST code value
       uint8_t  last_post_code_value_{0};
       // timestamp when last POST code value was received in milliseconds from boot

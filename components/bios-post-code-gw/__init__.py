@@ -1,17 +1,18 @@
 # pylint: disable=line-too-long, invalid-name, missing-function-docstring, missing-module-docstring, too-many-branches, pointless-statement
 
 import esphome.codegen as cg
-from esphome.components import sensor, text_sensor, uart
+from esphome.components import sensor, time, text_sensor, uart
 import esphome.config_validation as cv
 from esphome.const import (
     CONF_ID,
+    CONF_TIME_ID,
     ENTITY_CATEGORY_DIAGNOSTIC,
     DEVICE_CLASS_EMPTY,
     STATE_CLASS_MEASUREMENT,
 )
 
 DEPENDENCIES = ["uart"]
-AUTO_LOAD = ["sensor", "text_sensor"]
+AUTO_LOAD = ["sensor", "text_sensor", "time"]
 
 # using abbrev 'BPC' for 'BIOS POST Codes'
 CONF_BPC_ID = "bpc_id"
@@ -29,6 +30,7 @@ MULTI_CONF = True
 CONFIG_SCHEMA = cv.Schema(
 {
   cv.GenerateID(): cv.declare_id(BPC_COMPONENT),
+  cv.Optional(CONF_TIME_ID): cv.use_id(time.RealTimeClock),
   cv.Optional(CONF_BPC_CODE): sensor.sensor_schema(
     entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
     icon=ICON_BCP_CODE,
@@ -48,6 +50,10 @@ async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
     await uart.register_uart_device(var, config)
+
+    if CONF_TIME_ID in config:
+        time_id = await cg.get_variable(config[CONF_TIME_ID])
+        cg.add(var.set_realtime(time_id))
 
     if bpc_code_config := config.get(CONF_BPC_CODE):
         sens = await sensor.new_sensor(bpc_code_config)
