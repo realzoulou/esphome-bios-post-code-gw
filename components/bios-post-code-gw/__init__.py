@@ -21,28 +21,46 @@ CONF_BPC_ID = "bpc_id"
 CONF_BPC_CODE = "code"
 CONF_BPC_CODE_TEXT ="code_text"
 
-ICON_BCP_CODE= "mdi:numeric"
+# configurations
+CONF_BPC_POST_CODE_DESCRIPTIONS = "post_code_descriptions"
+CONF_BPC_POST_CODE_HEX = "hexcode"
+CONF_BPC_POST_CODE_DESC = "desc"
+CONF_BPC_POST_CODE_IGNORE_LIST = "ignore"
+
+ICON_BCP_CODE = "mdi:numeric"
 
 bpc_ns = cg.esphome_ns.namespace("bpc")
 BPC_COMPONENT = bpc_ns.class_("BPC", cg.Component)
 
 MULTI_CONF = True
+
+# POST code descriptions schema
+BPC_DESCRIPTIONS_SCHEMA = cv.Schema(
+    {
+        cv.Required(CONF_BPC_POST_CODE_HEX): cv.hex_int_range(min=0, max=255),
+        cv.Required(CONF_BPC_POST_CODE_DESC): str,
+    }
+)
+
+# main BPC schema
 CONFIG_SCHEMA = cv.Schema(
-{
-  cv.GenerateID(): cv.declare_id(BPC_COMPONENT),
-  cv.Optional(CONF_TIME_ID): cv.use_id(time.RealTimeClock),
-  cv.Optional(CONF_BPC_CODE): sensor.sensor_schema(
-    entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
-    icon=ICON_BCP_CODE,
-    device_class=DEVICE_CLASS_EMPTY,
-    state_class=STATE_CLASS_MEASUREMENT,
-  ),
-  cv.Optional(CONF_BPC_CODE_TEXT): text_sensor.text_sensor_schema(
-    entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
-    icon=ICON_BCP_CODE,
-    device_class=DEVICE_CLASS_EMPTY,
-  ),
-}
+  {
+    cv.GenerateID(): cv.declare_id(BPC_COMPONENT),
+    cv.Optional(CONF_TIME_ID): cv.use_id(time.RealTimeClock),
+    cv.Optional(CONF_BPC_CODE): sensor.sensor_schema(
+      entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
+      icon=ICON_BCP_CODE,
+      device_class=DEVICE_CLASS_EMPTY,
+      state_class=STATE_CLASS_MEASUREMENT,
+    ),
+    cv.Optional(CONF_BPC_CODE_TEXT): text_sensor.text_sensor_schema(
+      entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
+      icon=ICON_BCP_CODE,
+      device_class=DEVICE_CLASS_EMPTY,
+    ),
+    cv.Optional(CONF_BPC_POST_CODE_DESCRIPTIONS): cv.All(cv.ensure_list(BPC_DESCRIPTIONS_SCHEMA)),
+    cv.Optional(CONF_BPC_POST_CODE_IGNORE_LIST): cv.ensure_list(cv.hex_int_range(min=0, max=255)),
+  }
 ).extend(uart.UART_DEVICE_SCHEMA)
 FINAL_VALIDATE_SCHEMA = uart.final_validate_device_schema("bpc", require_rx=True)
 
@@ -62,6 +80,16 @@ async def to_code(config):
     if bpc_code_text_config := config.get(CONF_BPC_CODE_TEXT):
         sens = await text_sensor.new_text_sensor(bpc_code_text_config)
         cg.add(var.set_post_code_text_sensor(sens))
+
+    if bpc_code_descriptions := config.get(CONF_BPC_POST_CODE_DESCRIPTIONS):
+        for i in bpc_code_descriptions:
+            hexcode = i[CONF_BPC_POST_CODE_HEX]
+            desc = i[CONF_BPC_POST_CODE_DESC]
+            cg.add(var.set_code_and_description(hexcode, desc))
+
+    if bpc_ignore_list := config.get(CONF_BPC_POST_CODE_IGNORE_LIST):
+        for i in bpc_ignore_list:
+            cg.add(var.set_code_ignored(i))
 
     # ----- General compiler settings
     # treat warnings as error, abort compilation on first error, check printf format and arguments

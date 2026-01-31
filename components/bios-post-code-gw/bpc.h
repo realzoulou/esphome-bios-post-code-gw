@@ -1,5 +1,8 @@
 #pragma once
 
+#include <map>
+#include <vector>
+
 #include "esphome/core/component.h"
 #include "esphome/core/helpers.h"
 #include "esphome/components/uart/uart.h"
@@ -21,6 +24,8 @@ namespace esphome {
       void set_post_code_sensor(sensor::Sensor *sensor) { this->post_code_sensor_ = sensor; }
       void set_post_code_text_sensor(text_sensor::TextSensor *sensor) { this->post_code_text_sensor_ = sensor; }
       void set_realtime(time::RealTimeClock *time) { this->real_time_ = time; }
+      void set_code_and_description(const uint8_t code, const std::string & description) { this->code_descriptions_.emplace(code, description); }
+      void set_code_ignored(const uint8_t code) { this->codes_ignored_.push_back(code); }
       void do_realtime_self_check() const; // Note: method blocks caller for at least 1s
 
     private: // methods
@@ -52,6 +57,8 @@ namespace esphome {
       uint8_t  last_post_code_value_{0};
       // timestamp when last POST code value was received in milliseconds from boot
       uint32_t last_post_code_timestamp_{0};
+      std::map<uint8_t, std::string> code_descriptions_;
+      std::vector<uint8_t> codes_ignored_;
   }; // class BPC
 
   } // namespace esphome

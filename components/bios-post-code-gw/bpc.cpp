@@ -1,6 +1,7 @@
 #include "esphome/core/log.h"
 #include "esphome/core/time.h"
 
+#include <algorithm>
 #include <iomanip>
 #include <sstream>
 
@@ -115,7 +116,14 @@ void BPC::do_realtime_self_check() const {
 
 void BPC::update_post_code(const uint8_t code, const uint32_t timestamp) {
   const uint32_t deltaToLast = timestamp - this->last_post_code_timestamp_;
-  ESP_LOGI(LOGTAG, "POST 0x%02X @ %u | %u ms", code, timestamp, deltaToLast);
+
+  // if code is on ignore list, return but print to log
+  if (std::find(this->codes_ignored_.begin(), this->codes_ignored_.end(), code) != this->codes_ignored_.end()) {
+      ESP_LOGI(LOGTAG, "POST 0x%02X @ %u | %u ms | ignored", code, timestamp, deltaToLast);
+      return;
+  } else {
+      ESP_LOGI(LOGTAG, "POST 0x%02X @ %u | %u ms", code, timestamp, deltaToLast);
+  }
 
   if (this->post_code_sensor_ != nullptr) {
     this->post_code_sensor_->publish_state(static_cast<float>(code));
@@ -148,6 +156,10 @@ std::string BPC::format_post_code_text_sensor(const uint8_t code, const uint32_t
      << +deltaToLast
      << " ms"
     ;
+  }
+  // if a description for that code is available, add it
+  if (const auto search = this->code_descriptions_.find(code); search != this->code_descriptions_.end()) {
+    ss << " | " << search->second;
   }
 
   return ss.str();
