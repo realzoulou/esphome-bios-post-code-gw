@@ -1,0 +1,393 @@
+# List of BIOS POST codes for AMI BIOS
+# Sources:
+#   https://dlcdnet.asus.com/pub/ASUS/mb/LGA1151/MAXIMUS_IX_FORMULA/E12314_MAXIMUS_IX_FORMULA_UM_V3_WEB.pdf
+#   https://dlcdnet.asus.com/pub/ASUS/mb/SocketAM5/Pro_WS_B850M-ACE_SE/E26769_Pro_WS_B850M-ACE_SE_EM_WEB.pdf
+#   https://www.supermicro.com/manuals/other/AMI_BIOS_POST_Codes_for_Grantley_Motherboards.pdf
+#   https://www.asus.com/support/faq/1043948
+# Format:
+# - hexcode: 0x<hexadecimal integer>
+#   desc: <phase>: <text>
+- hexcode: 0x00
+  desc: 'SEC: CPU or Memory or Graphics card abnormal'
+- hexcode: 0x01
+  desc: 'SEC: Power on. Reset type detection (soft/hard)'
+- hexcode: 0x02
+  desc: 'SEC: AP initialization before microcode loading'
+- hexcode: 0x03
+  desc: 'SEC: System Agent initialization before microcode loading'
+- hexcode: 0x04
+  desc: 'SEC: PCH initialization before microcode loading'
+- hexcode: 0x06
+  desc: 'SEC: Microcode loading'
+- hexcode: 0x07
+  desc: 'SEC: AP initialization after microcode loading'
+- hexcode: 0x08
+  desc: 'SEC: System Agent initialization after microcode loading'
+- hexcode: 0x09
+  desc: 'SEC: PCH initialization after microcode loading'
+- hexcode: 0x0B
+  desc: 'SEC: Cache initialization'
+- hexcode: 0x0C
+  desc: 'SEC: Reserved for future AMI SEC error codes'
+- hexcode: 0x0D
+  desc: 'SEC: Reserved for future AMI SEC error codes'
+- hexcode: 0x0E
+  desc: 'SEC: Microcode not found'
+- hexcode: 0x0F
+  desc: 'SEC: Microcode not loaded'
+- hexcode: 0x10
+  desc: 'PEI: PEI Core is started'
+- hexcode: 0x11
+  desc: 'PEI: Pre-memory CPU initialization is started'
+- hexcode: 0x12
+  desc: 'PEI: Pre-memory CPU initialization is started'
+- hexcode: 0x13
+  desc: 'PEI: Pre-memory CPU initialization is started'
+- hexcode: 0x14
+  desc: 'PEI: Pre-memory CPU initialization is started'
+- hexcode: 0x15
+  desc: 'PEI: Pre-memory North Bridge initialization is started'
+- hexcode: 0x16
+  desc: 'PEI: Pre-memory System Agent initialization is started'
+- hexcode: 0x17
+  desc: 'PEI: Pre-memory System Agent initialization is started'
+- hexcode: 0x18
+  desc: 'PEI: Pre-memory System Agent initialization is started'
+- hexcode: 0x19
+  desc: 'PEI: CPU or Memory or Graphics card abnormal'
+- hexcode: 0x1A
+  desc: 'PEI: Pre-memory PCH initialization is started'
+- hexcode: 0x1B
+  desc: 'PEI: Pre-memory PCH initialization is started'
+- hexcode: 0x1C
+  desc: 'PEI: Pre-memory PCH initialization is started'
+- hexcode: 0x2B
+  desc: 'PEI: Memory initialization'
+- hexcode: 0x2C
+  desc: 'PEI: Memory initialization'
+- hexcode: 0x2D
+  desc: 'PEI: Memory initialization'
+- hexcode: 0x2E
+  desc: 'PEI: Memory initialization'
+- hexcode: 0x2F
+  desc: 'PEI: Memory initialization'
+- hexcode: 0x30
+  desc: 'PEI: CPU or Memory or Graphics card abnormal'
+- hexcode: 0x31
+  desc: 'PEI: Memory Installed'
+- hexcode: 0x32
+  desc: 'PEI: CPU post-memory initialization'
+- hexcode: 0x33
+  desc: 'PEI: CPU post-memory initialization'
+- hexcode: 0x34
+  desc: 'PEI: CPU post-memory initialization'
+- hexcode: 0x35
+  desc: 'PEI: CPU post-memory initialization'
+- hexcode: 0x36
+  desc: 'PEI: CPU post-memory initialization'
+- hexcode: 0x37
+  desc: 'PEI: Post-Memory System Agent initialization is started'
+- hexcode: 0x38
+  desc: 'PEI: Post-Memory System Agent initialization is started'
+- hexcode: 0x39
+  desc: 'PEI: Post-Memory System Agent initialization is started'
+- hexcode: 0x3A
+  desc: 'PEI: Post-Memory System Agent initialization is started'
+- hexcode: 0x3B
+  desc: 'PEI: Post-Memory PCH initialization is started'
+- hexcode: 0x3C
+  desc: 'PEI: Post-Memory PCH initialization is started'
+- hexcode: 0x3D
+  desc: 'PEI: Post-Memory PCH initialization is started'
+- hexcode: 0x3E
+  desc: 'PEI: Post-Memory PCH initialization is started'
+- hexcode: 0x40
+  desc: 'PEI: CPU or Memory or Graphics card abnormal'
+- hexcode: 0x4F
+  desc: 'PEI: DXE IPL is started'
+- hexcode: 0x50
+  desc: 'PEI Error: Memory initialization error. Invalid memory type or incompatible memory speed'
+- hexcode: 0x51
+  desc: 'PEI Error: Memory initialization error. Invalid memory type or incompatible memory speed'
+- hexcode: 0x52
+  desc: 'PEI Error: Memory initialization error. Invalid memory type or incompatible memory speed'
+- hexcode: 0x53
+  desc: 'PEI Error: Memory initialization error. Invalid memory type or incompatible memory speed'
+- hexcode: 0x54
+  desc: 'PEI Error: Unspecified memory initialization error'
+- hexcode: 0x55
+  desc: 'PEI Error: Memory not installed'
+- hexcode: 0x56
+  desc: 'PEI Error: Invalid CPU type or Speed'
+- hexcode: 0x57
+  desc: 'PEI Error: CPU mismatch'
+- hexcode: 0x58
+  desc: 'PEI Error: CPU self test failed or possible CPU cache error'
+- hexcode: 0x59
+  desc: 'PEI Error: CPU micro-code is not found or micro-code update is failed'
+- hexcode: 0x5A
+  desc: 'PEI Error: Internal CPU error'
+- hexcode: 0x5B
+  desc: 'PEI Error: Reset PPI is not available'
+- hexcode: 0x5C
+  desc: 'PEI Error: Reserved for future AMI error codes'
+- hexcode: 0x5D
+  desc: 'PEI Error: Reserved for future AMI error codes'
+- hexcode: 0x5E
+  desc: 'PEI Error: Reserved for future AMI error codes'
+- hexcode: 0x5F
+  desc: 'PEI Error: Reserved for future AMI error codes'
+- hexcode: 0x60
+  desc: 'DXE: DXE Core is started'
+- hexcode: 0x61
+  desc: 'DXE: NVRAM initialization'
+- hexcode: 0x62
+  desc: 'DXE: Installation of the South Bridge Runtime Services'
+- hexcode: 0x63
+  desc: 'DXE: CPU DXE initialization is started'
+- hexcode: 0x64
+  desc: 'DXE: CPU DXE initialization is started'
+- hexcode: 0x65
+  desc: 'DXE: CPU DXE initialization is started'
+- hexcode: 0x66
+  desc: 'DXE: CPU DXE initialization is started'
+- hexcode: 0x67
+  desc: 'DXE: CPU DXE initialization is started'
+- hexcode: 0x68
+  desc: 'DXE: PCI host bridge initialization'
+- hexcode: 0x69
+  desc: 'DXE: North Bridge DXE initialization is started'
+- hexcode: 0x6A
+  desc: 'DXE: System Agent DXE SMM initialization is started'
+- hexcode: 0x6B
+  desc: 'DXE: System Agent DXE initialization (System Agent module specific)'
+- hexcode: 0x6C
+  desc: 'DXE: System Agent DXE initialization (System Agent module specific)'
+- hexcode: 0x6D
+  desc: 'DXE: System Agent DXE initialization (System Agent module specific)'
+- hexcode: 0x6E
+  desc: 'DXE: System Agent DXE initialization (System Agent module specific)'
+- hexcode: 0x6F
+  desc: 'DXE: System Agent DXE initialization (System Agent module specific)'
+- hexcode: 0x70
+  desc: 'DXE: South Bridge DXE initialization is started'
+- hexcode: 0x71
+  desc: 'DXE: South Bridge DXE SMM initialization is started'
+- hexcode: 0x72
+  desc: 'DXE: South Bridge devices initialization'
+- hexcode: 0x73
+  desc: 'DXE: PCH DXE Initialization (PCH module specific)'
+- hexcode: 0x74
+  desc: 'DXE: PCH DXE Initialization (PCH module specific)'
+- hexcode: 0x75
+  desc: 'DXE: PCH DXE Initialization (PCH module specific)'
+- hexcode: 0x76
+  desc: 'DXE: PCH DXE Initialization (PCH module specific)'
+- hexcode: 0x77
+  desc: 'DXE: PCH DXE Initialization (PCH module specific)'
+- hexcode: 0x78
+  desc: 'DXE: ACPI module initialization'
+- hexcode: 0x79
+  desc: 'DXE: CSM initialization'
+- hexcode: 0x7A
+  desc: 'DXE: Reserved for future AMI DXE codes'
+- hexcode: 0x7B
+  desc: 'DXE: Reserved for future AMI DXE codes'
+- hexcode: 0x7C
+  desc: 'DXE: Reserved for future AMI DXE codes'
+- hexcode: 0x7D
+  desc: 'DXE: Reserved for future AMI DXE codes'
+- hexcode: 0x7E
+  desc: 'DXE: Reserved for future AMI DXE codes'
+- hexcode: 0x7F
+  desc: 'DXE: Reserved for future AMI DXE codes'
+- hexcode: 0x90
+  desc: 'DXE: Boot Device Selection (BDS) phase is started'
+- hexcode: 0x91
+  desc: 'DXE: Driver connecting is started'
+- hexcode: 0x92
+  desc: 'DXE: PCI Bus initialization is started'
+- hexcode: 0x93
+  desc: 'DXE: PCI Bus Hot Plug Controller Initialization'
+- hexcode: 0x94
+  desc: 'DXE: PCI Bus Enumeration'
+- hexcode: 0x95
+  desc: 'DXE: PCI Bus Request Resources'
+- hexcode: 0x96
+  desc: 'DXE: PCI Bus Assign Resources'
+- hexcode: 0x97
+  desc: 'DXE: Console Output devices connect'
+- hexcode: 0x98
+  desc: 'DXE: Console input devices connect'
+- hexcode: 0x99
+  desc: 'DXE: CPU or Memory abnormal'
+- hexcode: 0x9A
+  desc: 'DXE: USB initialization is started'
+- hexcode: 0x9B
+  desc: 'DXE: USB Reset'
+- hexcode: 0x9C
+  desc: 'DXE: USB Detect'
+- hexcode: 0x9D
+  desc: 'DXE: USB Enable'
+- hexcode: 0x9E
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0x9F
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xA0
+  desc: 'DXE: IDE initialization is started'
+- hexcode: 0xA1
+  desc: 'DXE: IDE Reset'
+- hexcode: 0xA2
+  desc: 'DXE: IDE Detect'
+- hexcode: 0xA3
+  desc: 'DXE: IDE Enable'
+- hexcode: 0xA4
+  desc: 'DXE: SCSI initialization is started'
+- hexcode: 0xA5
+  desc: 'DXE: SCSI Reset'
+- hexcode: 0xA6
+  desc: 'DXE: SCSI Detect'
+- hexcode: 0xA7
+  desc: 'DXE: SCSI Enable'
+- hexcode: 0xA8
+  desc: 'DXE: Setup Verifying Password'
+- hexcode: 0xA9
+  desc: 'DXE: Boot into the BIOS'
+- hexcode: 0xAA
+  desc: 'DXE: Boot into the system'
+- hexcode: 0xAB
+  desc: 'DXE: Setup Input Wait'
+- hexcode: 0xAC
+  desc: 'DXE: Reserved for ASL (see ASL Status Codes section below)'
+- hexcode: 0xAD
+  desc: 'DXE: Ready To Boot event'
+- hexcode: 0xAE
+  desc: 'DXE: Legacy Boot event'
+- hexcode: 0xAF
+  desc: 'DXE: Exit Boot Services event'
+- hexcode: 0xB0
+  desc: 'DXE: CPU or Memory abnormal'
+- hexcode: 0xB1
+  desc: 'DXE: Runtime Set Virtual Address MAP End'
+- hexcode: 0xB2
+  desc: 'DXE: External device abnormal'
+- hexcode: 0xB3
+  desc: 'DXE: System Reset'
+- hexcode: 0xB4
+  desc: 'DXE: USB hot plug'
+- hexcode: 0xB5
+  desc: 'DXE: PCI bus hot plug'
+- hexcode: 0xB6
+  desc: 'DXE: Clean-up of NVRAM'
+- hexcode: 0xB7
+  desc: 'DXE: Configuration Reset (reset of NVRAM settings)'
+- hexcode: 0xB8
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xB9
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xBA
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xBB
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xBC
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xBD
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xBE
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xBF
+  desc: 'DXE: Reserved for future AMI codes'
+- hexcode: 0xD0
+  desc: 'DXE Error: CPU initialization error'
+- hexcode: 0xD1
+  desc: 'DXE Error: System Agent initialization error'
+- hexcode: 0xD2
+  desc: 'DXE Error: PCH initialization error'
+- hexcode: 0xD3
+  desc: 'DXE Error: Some of the Architectural Protocols are not available'
+- hexcode: 0xD4
+  desc: 'DXE Error: PCI resource allocation error. Out of Resources'
+- hexcode: 0xD5
+  desc: 'DXE Error: No Space for Legacy Option ROM'
+- hexcode: 0xD6
+  desc: 'DXE Error: Memory or Graphics card abnormal'
+- hexcode: 0xD7
+  desc: 'DXE Error: No Console Input Devices are found'
+- hexcode: 0xD8
+  desc: 'DXE Error: Invalid password'
+- hexcode: 0xD9
+  desc: 'DXE Error: Error loading Boot Option (Loadlmage returned error)'
+- hexcode: 0xDA
+  desc: 'DXE Error: Boot Option is failed (Startlmage returned error)'
+- hexcode: 0xDB
+  desc: 'DXE Error: Flash update is failed'
+- hexcode: 0xDC
+  desc: 'DXE Error: Reset protocol is not available'
+- hexcode: 0xDD
+  desc: 'DXE Error: DXE phase BMC self-test failure'
+- hexcode: 0xDE
+  desc: 'S3 Resume Progress: S3 Resume is started (S3 Resume PPI is called by the DXE IPL)'
+- hexcode: 0xDF
+  desc: 'S3 Resume Progress: S3 Resume is started (S3 Resume PPI is called by the DXE IPL)'
+- hexcode: 0xE0
+  desc: 'S3 Resume Progress: S3 Resume is started (S3 Resume PPI is called by the DXE IPL)'
+- hexcode: 0xE1
+  desc: 'S3 Resume Progress: S3 Boot Script execution'
+- hexcode: 0xE2
+  desc: 'S3 Resume Progress: Video repost'
+- hexcode: 0xE3
+  desc: 'S3 Resume Progress: OS S3 wake vector call'
+- hexcode: 0xE4
+  desc: 'S3 Resume Progress: Reserved for future AMI progress codes'
+- hexcode: 0xE5
+  desc: 'S3 Resume Progress: Reserved for future AMI progress codes'
+- hexcode: 0xE6
+  desc: 'S3 Resume Progress: Reserved for future AMI progress codes'
+- hexcode: 0xE7
+  desc: 'S3 Resume Progress: Reserved for future AMI progress codes'
+- hexcode: 0xE8
+  desc: 'S3 Resume Error: S3 Resume Failed'
+- hexcode: 0xEA
+  desc: 'S3 Resume Error: S3 Resume Boot Script Error'
+- hexcode: 0xEB
+  desc: 'S3 Resume Error: S3 OS Wake Error'
+- hexcode: 0xEC
+  desc: 'S3 Resume Error: Reserved for future AMI error codes'
+- hexcode: 0xED
+  desc: 'S3 Resume Error: Reserved for future AMI error codes'
+- hexcode: 0xEE
+  desc: 'S3 Resume Error: Reserved for future AMI error codes'
+- hexcode: 0xEF
+  desc: 'S3 Resume Error: Reserved for future AMI error codes'
+- hexcode: 0xF0
+  desc: 'Recovery Progress: Recovery condition triggered by firmware (Auto recovery)'
+- hexcode: 0xF1
+  desc: 'Recovery Progress: Recovery condition triggered by user (Forced recovery)'
+- hexcode: 0xF2
+  desc: 'Recovery Progress: Recovery process started'
+- hexcode: 0xF3
+  desc: 'Recovery Progress: Recovery firmware image is found'
+- hexcode: 0xF4
+  desc: 'Recovery Progress: Recovery firmware image is loaded'
+- hexcode: 0xF5
+  desc: 'Recovery Progress: Reserved for future AMI progress codes'
+- hexcode: 0xF6
+  desc: 'Recovery Progress: Reserved for future AMI progress codes'
+- hexcode: 0xF7
+  desc: 'Recovery Progress: Reserved for future AMI progress codes'
+- hexcode: 0xF8
+  desc: 'Recovery Error: Recovery PPI is not available'
+- hexcode: 0xF9
+  desc: 'Recovery Error: Memory abnormal'
+- hexcode: 0xFA
+  desc: 'Recovery Error: Invalid recovery capsule'
+- hexcode: 0xFB
+  desc: 'Recovery Error: Reserved for future AMI error codes'
+- hexcode: 0xFC
+  desc: 'Recovery Error: Reserved for future AMI error codes'
+- hexcode: 0xFD
+  desc: 'Recovery Error: Reserved for future AMI error codes'
+- hexcode: 0xFE
+  desc: 'Recovery Error: Reserved for future AMI error codes'
+- hexcode: 0xFF
+  desc: 'Recovery Error: Reserved for future AMI error codes'
