@@ -150,13 +150,13 @@ std::string BPC::format_post_code_text_sensor(const uint8_t code, const uint32_t
   if (!realTimeString.empty()) {
     ss << " | " << realTimeString;
   }
-  // optionally add delta time to last POST code, if delta time is less than 5s
-  if (deltaToLast < 5000U) {
+
+  // add delta time to last POST code
     ss << " | Δ "
      << +deltaToLast
      << " ms"
     ;
-  }
+
   // if a description for that code is available, add it
   if (const auto search = this->code_descriptions_.find(code); search != this->code_descriptions_.end()) {
     ss << " | " << search->second;
