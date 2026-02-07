@@ -4,6 +4,7 @@
 #   https://dlcdnet.asus.com/pub/ASUS/mb/SocketAM5/Pro_WS_B850M-ACE_SE/E26769_Pro_WS_B850M-ACE_SE_EM_WEB.pdf
 #   https://www.supermicro.com/manuals/other/AMI_BIOS_POST_Codes_for_Grantley_Motherboards.pdf
 #   https://www.asus.com/support/faq/1043948
+#   https://www.congatec.com/fileadmin/user_upload/Documents/Others/AMI_Aptio_5.x_Status_Codes_PUB_Rev.2.0_20140410.pdf
 # Format:
 # - hexcode: 0x<hexadecimal integer>
 #   desc: <phase>: <text>
@@ -17,6 +18,8 @@
   desc: 'SEC: System Agent initialization before microcode loading'
 - hexcode: 0x04
   desc: 'SEC: PCH initialization before microcode loading'
+- hexcode: 0x05
+  desc: 'ACPI/ASL: System is entering S5 sleep state; SEC: OEM initialization before microcode loading'
 - hexcode: 0x06
   desc: 'SEC: Microcode loading'
 - hexcode: 0x07
